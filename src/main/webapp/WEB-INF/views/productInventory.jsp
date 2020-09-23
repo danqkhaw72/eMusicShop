@@ -11,9 +11,9 @@
     <div class="container-wrapper">
       <div class="container">   
 		  <div class="page-header">
-		  	<h1>All Products</h1>
+		  	<h1>Product Inventory</h1>
 		  	
-		  	<p class="load"> Checkout all the awesome products available now!</p>
+		  	<p class="load"> This is the product inventory page</p>
 		  </div>
 		  
 		  <table class="table table-striped table-hover">
@@ -39,5 +39,7 @@
 			  	</tr>
 		  	</c:forEach>
 		  </table>
+		  <hr>
+		  <a href="<spring:url value="/admin/productInventory/addProduct" />" class="btn btn-primary">Add Product</a>
 		  
 <%@include file="/WEB-INF/views/template/footer.jsp" %>	      

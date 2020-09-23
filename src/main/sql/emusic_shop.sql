@@ -8,7 +8,7 @@ USE `emusic_shop`;
 DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
-  `id` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(45) DEFAULT NULL,
   `product_category` varchar(45) DEFAULT NULL,
   `product_description` varchar(45) DEFAULT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` VALUES 
-	('1','Violin','Feder','i dont no', 1000,'condition','Active', 7,'manufacturer'),
-    ('2','Piano','Feder','i dont no', 5000,'condition','Active', 7,'manufacturer'),
-	('3','Gitar','Feder','i dont no', 1000,'condition','Active', 7,'manufacturer');
+	(1,'Violin','Feder','i dont no', 1000,'condition','Active', 7,'manufacturer'),
+    (2,'Piano','Feder','i dont no', 5000,'condition','Active', 7,'manufacturer'),
+	(3,'Gitar','Feder','i dont no', 1000,'condition','Active', 7,'manufacturer');
 
