@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/carousel.css" />" rel="stylesheet">
+    
+    <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->

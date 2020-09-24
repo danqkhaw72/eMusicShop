@@ -27,7 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
-	public Product getProductById(String id) {
+	public Product getProductById(int id) {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
 		Product product = (Product) currentSession.get(Product.class, id);
@@ -46,12 +46,13 @@ public class ProductDAOImpl implements ProductDAO {
 		return products;
 	}
 
-	public void deleteProduct(String id) {
+	public void deleteProduct(int id) {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.delete(getProductById(id));
 		currentSession.flush();
 
 	}
+
 
 }
