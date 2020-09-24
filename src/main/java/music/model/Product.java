@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -20,6 +22,7 @@ public class Product {
 	private int productId;
 	
 	@Column(name="product_name")
+	@NotEmpty(message = "The product name must not be null")
 	private String productName;
 	
 	@Column(name="product_category")
@@ -29,6 +32,7 @@ public class Product {
 	private String productDescription;
 	
 	@Column(name="product_price")
+	@NotNull(message = "The product price must not be less then zero")
 	private double productPrice;
 	
 	@Column(name="product_condition")
@@ -38,6 +42,7 @@ public class Product {
 	private String productStatus;
 	
 	@Column(name="unit_in_stock")
+	@NotNull(message = "The product unit must be less than zero")
 	private int unitInStock;
 	
 	@Column(name="product_manufacturer")

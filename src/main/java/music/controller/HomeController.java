@@ -8,10 +8,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,8 +87,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/admin/productInventory/addProduct", method = RequestMethod.POST)
-	public String addProductPost(@ModelAttribute("product") Product product,
-									HttpServletRequest request) {
+	public String addProductPost(@Valid @ModelAttribute("product") Product product,
+									BindingResult result ,HttpServletRequest request) {
+		if(result.hasErrors()) {
+			return "addProduct";
+		}
+		
 		productDAO.addProduct(product);
 		
 		MultipartFile productImage = product.getProductImage();
@@ -114,13 +120,49 @@ public class HomeController {
 		
 		if(Files.exists(path)) {
 			try {
-				Files.delete(path);
+				Files.delete(path);	
+				System.out.println("delete SUCCESS !!!!!!!!!!!");
 			} catch (IOException exc) {
 				exc.printStackTrace();
 			}
 		}
 		
 		productDAO.deleteProduct(productId);
+		
+		return "redirect:/admin/productInventory";
+	}
+	
+	@RequestMapping("/admin/productInventory/editProduct/{productId}")
+	public String editProduct(@PathVariable("productId") int productId, Model model) {
+		
+		Product product = productDAO.getProductById(productId);
+		
+		model.addAttribute("product", product);
+		
+		return "editProduct";
+	}
+	
+	@RequestMapping(value="/admin/productInventory/editProduct", method = RequestMethod.POST)
+	public String editProduct(@Valid @ModelAttribute("product") Product product, BindingResult result ,
+								Model model, HttpServletRequest request) {
+		
+		if(result.hasErrors()) {
+			return "editProduct";
+		}
+		
+		MultipartFile productImage = product.getProductImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
+		
+		if(productImage != null && !productImage.isEmpty()) {
+			try {
+				productImage.transferTo(new File(path.toString()));
+			} catch (Exception e) {
+				throw new RuntimeException("Product img saving failed !", e);
+			}
+		}
+		
+		productDAO.editProduct(product);
 		
 		return "redirect:/admin/productInventory";
 	}

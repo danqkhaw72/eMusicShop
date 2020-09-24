@@ -5,15 +5,16 @@
     <div class="container marketing">
       <div class="container">   
 		  <div class="page-header">
-		  	<h1>Add Product</h1>
+		  	<h1>Edit Product</h1>
 		  	
-		  	<p class="load">Fill the below information to add a product:</p>
+		  	<p class="load">Please update product information here:</p>
 		  </div>
 		  
-		  <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post" commandName="product" enctype="multipart/form-data">
+		  <form:form action="${pageContext.request.contextPath}/admin/productInventory/editProduct" method="post" commandName="product" enctype="multipart/form-data">
+		  	<form:hidden path="productId" value="${product.productId}" />
 		  	<div class="form-group">
-		  		<label for="name">Name</label> <form:errors path="productName" cssStyle="color: #ff0000;" />
-		  		<form:input path="productName" id="name" class="form-control" />
+		  		<label for="name">Name</label>
+		  		<form:input path="productName" id="name" class="form-control" value="${product.productName}" />
 		  	</div>
 		  	<div class="form-group">
 		  		<label for="category">Category</label>
@@ -26,11 +27,11 @@
 		  	</div>
 		  	<div class="form-group">
 		  		<label for="description">Description</label>
-		  		<form:textarea path="productDescription" id="description" class="form-control" />
+		  		<form:textarea path="productDescription" id="description" class="form-control" value="${product.productDescription}" />
 		  	</div>
 		  	<div class="form-group">
-		  		<label for="price">Price</label><form:errors path="productPrice" cssStyle="color: #ff0000;" />
-		  		<form:input path="productPrice" id="price" class="form-control" />
+		  		<label for="price">Price</label>
+		  		<form:input path="productPrice" id="price" class="form-control" value="${product.productPrice}" />
 		  	</div>
 		  	<div class="form-group">
 		  		<label for="condition">Condition</label>
@@ -47,16 +48,16 @@
 		  														value="inactive" />Inactive</label>												
 		  	</div>
 		  	<div class="form-group">
-		  		<label for="unitInStock">Unit In Stock</label><form:errors path="unitInStock" cssStyle="color: #ff0000;" />
-		  		<form:input path="unitInStock" id="unitInStock" class="form-control" />
+		  		<label for="unitInStock">Unit In Stock</label>
+		  		<form:input path="unitInStock" id="unitInStock" class="form-control" value="${product.unitInStock}" />
 		  	</div>
 		  	<div class="form-group">
 		  		<label for="manufacturer">Manufacturer</label>
-		  		<form:input path="productManufacturer" id="manufacturer" class="form-control" />
+		  		<form:input path="productManufacturer" id="manufacturer" class="form-control" value="${product.productManufacturer}" />
 		  	</div>
 		  	<div class="form-group">
 		  		<label class="control-label" for="productImage">Upload Picture</label>
-		  		<form:input path="productImage" id="productImage" type="file" class="form:input-large" />
+		  		<form:input path="productImage" id="productImage" type="file" class="form:input-large" value="${product.productImage}" />
 		  	</div>
 		  	
 		  	<br><br>

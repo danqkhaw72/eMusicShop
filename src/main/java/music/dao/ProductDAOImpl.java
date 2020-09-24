@@ -26,6 +26,14 @@ public class ProductDAOImpl implements ProductDAO {
 		currentSession.flush();
 
 	}
+	
+	public void editProduct(Product product) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(product);
+		currentSession.flush();
+
+	}
 
 	public Product getProductById(int id) {
 		
