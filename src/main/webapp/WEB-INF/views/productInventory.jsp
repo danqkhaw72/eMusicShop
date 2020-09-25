@@ -2,14 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/template/header.jsp" %>
 
-
-    
-
-
-    
-
     <div class="container-wrapper">
       <div class="container">   
+      	<br><br><br>
 		  <div class="page-header">
 		  	<h1>Product Inventory</h1>
 		  	
