@@ -3,8 +3,11 @@ package music.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import music.model.Cart;
 
+@Repository
 public class CartDAOImpl implements CartDAO {
 	
 	private Map<Integer, Cart> listOfCart;
