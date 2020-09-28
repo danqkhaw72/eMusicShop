@@ -26,7 +26,7 @@ import music.model.Product;
 @Controller
 public class AdminController {
 	
-	private Path path;
+	private Path path, pathAudio;
 	
 	@Autowired
 	private ProductDAO productDAO;
@@ -73,12 +73,27 @@ public class AdminController {
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
 		
+		// Audio
+		MultipartFile productAudio = product.getProductAudio();
+		String rootDirectoryAudio = request.getSession().getServletContext().getRealPath("/");
+		pathAudio = Paths.get(rootDirectoryAudio + "\\WEB-INF\\resources\\audio\\" + product.getProductId() + ".mp3");
+		
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
 				productImage.transferTo(new File(path.toString()));
 			} catch (Exception exc) {
 				exc.printStackTrace();
 				throw new RuntimeException("Product image saving failed", exc);
+			}
+		}
+		
+		// Audio
+		if(productAudio != null && !productAudio.isEmpty()) {
+			try {
+				productAudio.transferTo(new File(pathAudio.toString()));
+			} catch (Exception exc) {
+				exc.printStackTrace();
+				throw new RuntimeException("Product audio saving failed", exc);
 			}
 		}
 		
@@ -95,6 +110,30 @@ public class AdminController {
 		if(Files.exists(path)) {
 			try {
 				Files.delete(path);	
+				System.out.println("delete SUCCESS !!!!!!!!!!!");
+			} catch (IOException exc) {
+				exc.printStackTrace();
+			}
+		}
+		
+		// Audio
+		String rootDirectoryAudio = request.getSession().getServletContext().getRealPath("/");
+		pathAudio = Paths.get(rootDirectoryAudio + "\\WEB-INF\\resources\\audio\\" + productId + ".mp3");
+		
+		if(Files.exists(path)) {
+			try {
+				Files.delete(path);	
+				System.out.println("delete SUCCESS !!!!!!!!!!!");
+			} catch (IOException exc) {
+				exc.printStackTrace();
+			}
+		}
+		
+		
+		// Audio
+		if(Files.exists(pathAudio)) {
+			try {
+				Files.delete(pathAudio);	
 				System.out.println("delete SUCCESS !!!!!!!!!!!");
 			} catch (IOException exc) {
 				exc.printStackTrace();
@@ -131,6 +170,21 @@ public class AdminController {
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
 				productImage.transferTo(new File(path.toString()));
+			} catch (Exception e) {
+				throw new RuntimeException("Product img saving failed !", e);
+			}
+		}
+		
+		// Audio
+		MultipartFile productAudio = product.getProductAudio();
+		String rootDirectoryAudio = request.getSession().getServletContext().getRealPath("/");
+		pathAudio = Paths.get(rootDirectoryAudio + "\\WEB-INF\\resources\\audio\\" + product.getProductId() + ".mp3");
+		
+		
+		
+		if(productAudio != null && !productAudio.isEmpty()) {
+			try {
+				productAudio.transferTo(new File(pathAudio.toString()));
 			} catch (Exception e) {
 				throw new RuntimeException("Product img saving failed !", e);
 			}

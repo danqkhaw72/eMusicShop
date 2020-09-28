@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Cart {
 	
-	private int cartId;
+	private String cartId;
 	
 	private Map<Integer, CartItem> cartItems;
 	
@@ -16,16 +16,16 @@ public class Cart {
 		grandTotal=0;
 	}
 	
-	public Cart(int cartId) {
+	public Cart(String cartId) {
 		this();
 		this.cartId=cartId;
 	}
 
-	public int getCartId() {
+	public String getCartId() {
 		return cartId;
 	}
 
-	public void setCartId(int cartId) {
+	public void setCartId(String cartId) {
 		this.cartId = cartId;
 	}
 

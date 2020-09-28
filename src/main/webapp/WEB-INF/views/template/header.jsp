@@ -14,12 +14,17 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/carousel/">
 
     <title>Music Store</title>
-
+	
+	<!-- Angular JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js" > </script>
+	
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/carousel.css" />" rel="stylesheet">
+    
+    
     
   
     

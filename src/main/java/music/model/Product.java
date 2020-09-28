@@ -51,6 +51,9 @@ public class Product {
 	@Transient
 	private MultipartFile productImage;
 	
+	@Transient
+	private MultipartFile productAudio;
+	
 	
 
 	public int getProductId() {
@@ -131,6 +134,14 @@ public class Product {
 
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
+	}
+
+	public MultipartFile getProductAudio() {
+		return productAudio;
+	}
+
+	public void setProductAudio(MultipartFile productAudio) {
+		this.productAudio = productAudio;
 	}
 	
 	

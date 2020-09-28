@@ -6,10 +6,10 @@ public interface CartDAO {
 	
 	Cart create(Cart cart);
 	
-	Cart read(Cart cart);
+	Cart read(String cart);
 	
-	void update(int cartId, Cart cart);
+	void update(String cartId, Cart cart);
 	
-	void delete(int cartId);
+	void delete(String cartId);
 
 }

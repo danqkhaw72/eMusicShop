@@ -4,6 +4,7 @@
 
     <div class="container marketing">
       <div class="container">   
+      	<br><br><br>
 		  <div class="page-header">
 		  	<h1>Add Product</h1>
 		  	
@@ -57,6 +58,10 @@
 		  	<div class="form-group">
 		  		<label class="control-label" for="productImage">Upload Picture</label>
 		  		<form:input path="productImage" id="productImage" type="file" class="form:input-large" />
+		  	</div>
+		  	<div class="form-group">
+		  		<label class="control-label" for="productAudio">Upload Audio</label>
+		  		<form:input path="productAudio" id="productAudio" type="file" class="form:input-large" />
 		  	</div>
 		  	
 		  	<br><br>
