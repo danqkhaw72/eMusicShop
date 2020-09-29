@@ -1,10 +1,10 @@
-package music.dao;
+package music.service;
 
 import java.util.List;
 
 import music.model.Product;
 
-public interface ProductDAO {
+public interface ProductService {
 	
 	List<Product> getProductList();
 	

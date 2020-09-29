@@ -19,48 +19,50 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	private SessionFactory sessionFactory;
 
-	public void addProduct(Product product) {
+	public List<Product> getProductList() {
 		
-		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.saveOrUpdate(product);
+		Session currentSession =  sessionFactory.getCurrentSession();
+		Query query = currentSession.createQuery("from Product");
+		List<Product> productList = query.list();
 		currentSession.flush();
-
-	}
-	
-	public void editProduct(Product product) {
 		
-		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.saveOrUpdate(product);
-		currentSession.flush();
-
+		return productList;
 	}
 
 	public Product getProductById(int id) {
 		
-		Session currentSession = sessionFactory.getCurrentSession();
+		Session currentSession =  sessionFactory.getCurrentSession();
 		Product product = (Product) currentSession.get(Product.class, id);
 		currentSession.flush();
 		
 		return product;
 	}
 
-	public List<Product> getAllProducts() {
+	public void addProduct(Product product) {
 		
-		Session currentSession = sessionFactory.getCurrentSession();
-		Query query = currentSession.createQuery("from Product");
-		List<Product> products = query.list();
+		Session currentSession =  sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(product);
 		currentSession.flush();
 		
-		return products;
 	}
 
-	public void deleteProduct(int id) {
+	public void editProduct(Product product) {
 		
-		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.delete(getProductById(id));
+		Session currentSession =  sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(product);
 		currentSession.flush();
-
+		
 	}
+
+	public void deleteProduct(Product product) {
+		
+		Session currentSession =  sessionFactory.getCurrentSession();
+		currentSession.delete(product);
+		currentSession.flush();
+		
+	}
+
+	
 
 
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import music.dao.ProductDAO;
 import music.model.Product;
@@ -16,34 +17,25 @@ import music.model.Product;
 @Controller
 public class HomeController {
 	
-	
-	@Autowired
-	private ProductDAO productDAO;
-	
 	@RequestMapping("/")
 	public String home() {
 		return "index";
 	}
 	
-	@RequestMapping("/productList")
-	public String getProducts(Model model) {
+	@RequestMapping("/login")
+	public String login(@RequestParam(value = "error", required = false) String error, 
+			@RequestParam(value = "logout", required = false) String logout, Model model) {
 		
-		List<Product> products = productDAO.getAllProducts();
+		if(error != null) {
+			model.addAttribute("error", "Invalid username and password");
+		}
 		
-		model.addAttribute("products", products);
+		if(logout != null) {
+			model.addAttribute("msg", "You have been logged out successfully");
+		}
 		
-		return "productList";
+		return "login";
 		
-	}
-	
-	@RequestMapping("/productList/viewProduct/{productId}")
-	public String viewProduct(@PathVariable int productId,
-								Model model) throws IOException {
-		
-		Product product = productDAO.getProductById(productId);
-		model.addAttribute(product);
-		
-		return "viewProduct";
 	}
 	
 	

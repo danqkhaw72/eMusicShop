@@ -1,40 +1,55 @@
 package music.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Cart {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Cart implements Serializable {
 	
-	private String cartId;
+	private static final long serialVersionUID = 5525799099972479619L;
+
+	@Id
+	@GeneratedValue
+	private int cartId;
 	
-	private Map<Integer, CartItem> cartItems;
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<CartItem> cartItems;
+	
+	private Customer customer;
 	
 	private double grandTotal;
-	
-	private Cart() {
-		cartItems = new HashMap<Integer, CartItem>();
-		grandTotal=0;
-	}
-	
-	public Cart(String cartId) {
-		this();
-		this.cartId=cartId;
-	}
 
-	public String getCartId() {
+	public int getCartId() {
 		return cartId;
 	}
 
-	public void setCartId(String cartId) {
+	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
 
-	public Map<Integer, CartItem> getCartItems() {
+	public List<CartItem> getCartItems() {
 		return cartItems;
 	}
 
-	public void setCartItems(Map<Integer, CartItem> cartItems) {
+	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public double getGrandTotal() {
@@ -45,32 +60,6 @@ public class Cart {
 		this.grandTotal = grandTotal;
 	}
 	
-	public void addCartItem (CartItem item) {
-		int productId = item.getProduct().getProductId();
-		
-		if(cartItems.containsKey(productId)) {
-			CartItem existingCartItem = cartItems.get(productId);
-			existingCartItem.setQuantity(existingCartItem.getQuantity()+item.getQuantity());
-			cartItems.put(productId, item);
-		} else {
-			cartItems.put(productId, item);
-		}
-		
-		updateGrandTotal();
-	}
 	
-	public void removeCartItem(CartItem item) {
-		int productId = item.getProduct().getProductId();
-		cartItems.remove(productId);
-		updateGrandTotal();
-		
-	}
-	
-	public void updateGrandTotal() {
-		grandTotal = 0;
-		for(CartItem item : cartItems.values()) {
-			grandTotal = grandTotal + item.getTotalPrice();
-		}
-	}
 
 }
