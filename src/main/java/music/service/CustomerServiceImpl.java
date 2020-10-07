@@ -30,4 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDAO.getAllCustomer();
 	}
 
+	public Customer getCustomerByUsername(String username) {
+		
+		return customerDAO.getCustomerByUsername(username);
+	}
+
 }

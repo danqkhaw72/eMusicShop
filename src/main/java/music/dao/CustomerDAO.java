@@ -11,5 +11,7 @@ public interface CustomerDAO {
 	Customer getCustomerId(int customerId);
 	
 	List<Customer> getAllCustomer();
+	
+	Customer getCustomerByUsername(String username);
 
 }
