@@ -28,6 +28,13 @@
 		  </h3>
 		  
 		  <p>Here you can view, check and notify the product inventory<p>
+		  <br><br>
+		  
+		  <h3>
+		  	<a href="<c:url value="/admin/customer" />" >Customer Managementy</a>
+		  </h3>
+		  
+		  <p>Here you can view the customer information<p>
 		  
 		  
 		  

@@ -24,7 +24,7 @@ public class CartController {
 		Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
 		int cartId = customer.getCart().getCartId();
 		
-		return "redirect:/customer/cart"+cartId;
+		return "redirect:/customer/cart/"+cartId;
 		
 	}
 	

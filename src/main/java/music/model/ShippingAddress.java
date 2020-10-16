@@ -22,8 +22,6 @@ public class ShippingAddress implements Serializable {
 	
 	private String city;
 	
-	private String state;
-	
 	private String country;
 	
 	private String zipCode;
@@ -63,14 +61,6 @@ public class ShippingAddress implements Serializable {
 		this.city = city;
 	}
 
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
 	public String getCountry() {
 		return country;
 	}
@@ -97,9 +87,12 @@ public class ShippingAddress implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ShippingAddress [streetName=" + streetName + ", apartmentNumber=" + apartmentNumber + ", city=" + city
-				+ ", state=" + state + ", country=" + country + ", zipCode=" + zipCode + "]";
+		return "ShippingAddress [shippingAddressId=" + shippingAddressId + ", streetName=" + streetName
+				+ ", apartmentNumber=" + apartmentNumber + ", city=" + city + ", country=" + country + ", zipCode="
+				+ zipCode + ", customer=" + customer + "]";
 	}
+
+	
 	
 	
 	
