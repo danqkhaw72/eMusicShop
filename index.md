@@ -19,6 +19,8 @@ Kiến trúc MVC (Model - View - Controller) thể hiện rõ trong sơ đồ n�
 - Source chứa resouce (bao gồm file html, jsp, css, js) nằm ở **src/main/webapp/WEB-INF/** bao gồm 2 thư mục chính là
     * views: Chứa các view jsp được định nghĩa
     * resources: chứa các file có định dạnh khác (js, css, image, ..) 
+    
+    
 ### Ví dụ
 ```java
 @RequestMapping("/product")
@@ -34,6 +36,8 @@ public class ProductController {
 	}
 }
 ```
+
+
 ### Module chọn để làm
 
 1. Tính tổng giá trong giỏ hàng **CustomerOrderServiceImpl.java**
