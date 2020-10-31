@@ -36,7 +36,7 @@ public class ProductController {
 ```
 ### Module chọn để làm
 
-1. Tính tổng giá trong giỏ hàng **CustomerOrderServiceImpl.java*
+1. Tính tổng giá trong giỏ hàng **CustomerOrderServiceImpl.java**
 ```java
 public double getCustomerOrderGrandTotal(int cartId) {
 		
@@ -53,7 +53,7 @@ public double getCustomerOrderGrandTotal(int cartId) {
 		return grandTotal;
 	}
 ```
-2. Kiểm tra user có tồn tại trong database để thêm mới user
+2. Kiểm tra user có tồn tại trong database để thêm mới user **RegisterController.java**
 ```java
 @RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerCustomerPost(@Valid @ModelAttribute("customer") Customer customer,
