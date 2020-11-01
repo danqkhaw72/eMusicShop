@@ -3,9 +3,9 @@
 ### Kiến trúc
 ![](https://terasolunaorg.github.io/guideline/1.0.1.RELEASE/en/_images/RequestLifecycle.png)
 Kiến trúc MVC (Model - View - Controller) thể hiện rõ trong sơ đồ này. Nếu chưa hiểu thì các bạn chỉ cần tập trung 4 thành phần sau:
-1. **Controller**: Thành phần điều phối. Khi request https://url/card/ **(từ 1 -> 2-> 3 -> 4)** sẽ chạy vào controller CardController (lấy ví dụ) chẳng hạn. Nó sẽ lấy data từ database và return **view name** (5) jsp cho user thấy ( tương tự với controller trong servelet) 
-2. **Model**: Khai báo các thuộc tính (như Xe đạp bao gồm yên, bánh, bàn đạp,..). Khi lấy data từ database sẽ cố gắn ánh xạ các trường từ database sang model này. View khi render cũng dựa trên các trường trên model để render
-3. **View**: View là file **\*.jsp** tại đây nhận data là model từ controller trả về rồi in ra.
+1. **Controller**:  Nhận yêu cầu từ người dùng và sử dụng Model & View để xử lý và trả kết quả cho người dùng. Thành phần điều phối. Khi request https://url/card/ **(từ 1 -> 2-> 3 -> 4)** sẽ chạy vào controller CardController (lấy ví dụ) chẳng hạn. Nó sẽ lấy data từ database và return **view name** (5) jsp cho user thấy ( tương tự với controller trong servelet) 
+2. **Model**: Chứa thông tin đối tượng, tương tác với DB. Khai báo các thuộc tính (như Xe đạp bao gồm yên, bánh, bàn đạp,..). Khi lấy data từ database sẽ cố gắn ánh xạ các trường từ database sang model này. View khi render cũng dựa trên các trường trên model để render
+3. **View**: Giao diện hệ thống, tương tác với người dùng
 4. **Service**: Chứa logic nghiệp vụ của ứng dụng. VD: lấy data từ đâu, như thế nào, xử lí data ở dạng các mảng, object, vv.
 
 
